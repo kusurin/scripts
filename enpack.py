@@ -79,16 +79,15 @@ for file in files[:]:
 
 packs = filepacks()
 
-print(files)
 
 for file in files:
     packs.apendFile(file,antRE)
 
 for i in range(0,packs.getLen()):
-    print('dir',packs.listPackByNumber(i))
+    print('dir',packs.getPackNameByNumber(i))
     if not os.path.exists('./'+packs.getPackNameByNumber(i)):
-        print('mkdir',packs.listPackByNumber(i))
+        print('mkdir',packs.getPackNameByNumber(i))
         os.mkdir('./'+packs.getPackNameByNumber(i))
     for file in packs.listPackByNumber(i):
         print('mv',file)
-        shutil.move('./'+file,'./'+packs.getPackNameByNumber(i)+'/'+re.search('(?<=[_]).+$',file).group(),file)
+        shutil.move('./'+file,'./'+packs.getPackNameByNumber(i)+'/'+re.search('[^_]+$',file).group(),file)
