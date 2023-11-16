@@ -74,10 +74,7 @@ class filepacks(object):
 
 files = os.listdir('./')
 
-for file in files[:]:
-    if re.search(antRE,file) == None or re.search(formRE,file) == None :
-        files.remove(file)
-        print('rm',file)
+files = [file for file in files if re.search(antRE,file) and re.search(formRE,file)]
 
 packs = filepacks()
 
