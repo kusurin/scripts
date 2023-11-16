@@ -92,4 +92,4 @@ for i in range(0,packs.getLen()):
         os.mkdir('./'+packs.getPackNameByNumber(i))
     for file in packs.listPackByNumber(i):
         print('mv',file)
-        shutil.move('./'+file,'./'+packs.getPackNameByNumber(i)+'/'+re.search(renameRE,file).group()+file)
+        shutil.move('./'+file,'./'+packs.getPackNameByNumber(i)+'/'+re.search(renameRE,file).group())
