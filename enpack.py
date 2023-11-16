@@ -2,7 +2,9 @@ import os
 import shutil
 import re
 
-antRE = '^.+?(?=[_])'
+antRE = '^.+?(?=[_])' #public ante title of files
+formRE = '.png$' #file type
+renameRE = '[^_]+$' #new name of files
 
 class filepack(object):
     def __init__(self,__name):
@@ -73,7 +75,7 @@ class filepacks(object):
 files = os.listdir('./')
 
 for file in files[:]:
-    if re.search(antRE,file) == None or re.search('.png$',file) == None :
+    if re.search(antRE,file) == None or re.search(formRE,file) == None :
         files.remove(file)
         print('rm',file)
 
@@ -90,4 +92,4 @@ for i in range(0,packs.getLen()):
         os.mkdir('./'+packs.getPackNameByNumber(i))
     for file in packs.listPackByNumber(i):
         print('mv',file)
-        shutil.move('./'+file,'./'+packs.getPackNameByNumber(i)+'/'+re.search('[^_]+$',file).group(),file)
+        shutil.move('./'+file,'./'+packs.getPackNameByNumber(i)+'/'+re.search(renameRE,file).group(),file)
