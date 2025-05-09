@@ -102,6 +102,11 @@ def resize_all_groups(label_path="./labeled-data",ratio=1,width=-1,height=-1,des
         resize_png_in_group(label_group["png_paths"],width,height,label_group["name"],dest_dir)
         resize_csv_in_group(label_group["csv_path"],width_ratio,height_ratio,label_group["name"],dest_dir)
 
+def backup_label_data(label_path="./labeled-data"):
+    if os.path.exists(label_path + "-ori"):
+        backup_label_data(label_path=label_path+"-ori")
+    os.rename(label_path, label_path+"-ori")
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--label_path", type=str, default="./labeled-data")
@@ -119,7 +124,7 @@ if __name__ == "__main__":
     if args.convertcsv2h5 == "yes":
         import deeplabcut
 
-        os.rename(args.label_path, args.label_path + "-ori")
+        backup_label_data(label_path=args.label_path)
         os.rename(args.dest_dir, args.label_path)
 
         deeplabcut.convertcsv2h5(args.config_path,userfeedback=False)
