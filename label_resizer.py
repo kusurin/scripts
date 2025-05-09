@@ -124,7 +124,8 @@ if __name__ == "__main__":
     if args.convertcsv2h5 == "yes":
         import deeplabcut
 
-        backup_label_data(label_path=args.label_path)
-        os.rename(args.dest_dir, args.label_path)
+        label_path_current = os.path.join(os.path.dirname(args.label_path),"labeled-data")
+        backup_label_data(label_path=label_path_current)
+        os.rename(args.dest_dir, label_path_current)
 
         deeplabcut.convertcsv2h5(args.config_path,userfeedback=False)
