@@ -7,8 +7,8 @@
 <summary>English</summary>
 
 ## Function
-Resize DeepLabCut labeled datasets.
-If the `convertcsv2h5` feature is not enabled, the new dataset will be saved in the `labeled-data-resized` directory.
+Resize DeepLabCut labeled datasets.  
+If the `convertcsv2h5` feature is not enabled, the new dataset will be saved in the `labeled-data-resized` directory.  
 If the `convertcsv2h5` feature is enabled, the original dataset will be renamed to `labeled-data-ori`, and the new dataset will be renamed to `labeled-data`.
 
 ## Usage
@@ -24,6 +24,7 @@ python label_resizer.py [parameters]
 - `--dest_dir`: Output directory, default is "./labeled-data-resized"
 - `--convertcsv2h5`: Whether to convert CSV to H5, options are "yes" or "no", default is "no"
 - `--config_path`: DeepLabCut configuration file path, default is "./config.yaml"
+<br>
 
 - When `ratio` is specified and `width` and `height` are default: Scale images and annotation points proportionally
 - When `width` is specified and `height` is default: Scale by width, height adjusts proportionally
@@ -37,8 +38,8 @@ If you need to enable the `convertcsv2h5` feature, you must have `deeplabcut` in
 </details>
 
 ## 功能
-对DeepLabCut标注数据集进行尺寸缩放调整
-如果没有启用`convertcsv2h5`功能，新的数据集会保存在`labeled-data-resized`目录下
+对DeepLabCut标注数据集进行尺寸缩放调整  
+如果没有启用`convertcsv2h5`功能，新的数据集会保存在`labeled-data-resized`目录下  
 如果启用`convertcsv2h5`功能，原来的数据集会重命名为`labeled-data-ori`，然后新的数据集会重命名为`labeled-data`
 
 ## 使用方法
@@ -54,6 +55,7 @@ python label_resizer.py [参数]
 - `--dest_dir`：输出目录，默认为"./labeled-data-resized"
 - `--convertcsv2h5`：是否将CSV转换为H5，可选"yes"或"no"，默认为"no"
 - `--config_path`：DeepLabCut配置文件路径，默认为"./config.yaml"
+<br>
 
 - 指定`ratio`而`width`和`height`为默认值时：按比例缩放图像和标注点
 - 指定`width`而`height`为默认值时：按宽度缩放，高度自动按比例调整
